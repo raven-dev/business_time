@@ -177,11 +177,11 @@ module BusinessTime
         end
 
         (config["holidays"]["regions"]["us"] || []).each do |holiday|
-          holidays.regions.us << Date.parse(holiday)
+          holidays[:regions][:us] << Date.parse(holiday)
         end
 
         (config["holidays"]["regions"]["pe"] || []).each do |holiday|
-          holidays.regions.pe << Date.parse(holiday)
+          holidays[:regions][:pe] << Date.parse(holiday)
         end
       end
 
