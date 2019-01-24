@@ -8,9 +8,9 @@ class Date
 
   def business_dates_until(to_date, region, inclusive = false)
     if inclusive
-      region = "us" ? (self..to_date).select(&:us_workday?) : (self..to_date).select(&:pe_workday?)
+      region == "us" ? (self..to_date).select(&:us_workday?) : (self..to_date).select(&:pe_workday?)
     else
-      region = "us" ? (self...to_date).select(&:us_workday?) : (self...to_date).select(&:pe_workday?)
+      region == "us" ? (self...to_date).select(&:us_workday?) : (self...to_date).select(&:pe_workday?)
     end
   end
 
