@@ -2,11 +2,11 @@
 class Date
   include BusinessTime::TimeExtensions
 
-  def business_days_until(to_date, region = :us, inclusive = false)
-    business_dates_until(to_date, region = :us, inclusive).size
+  def business_days_until(to_date, region, inclusive = false)
+    business_dates_until(to_date, region, inclusive).size
   end
 
-  def business_dates_until(to_date, region = :us, inclusive = false)
+  def business_dates_until(to_date, region, inclusive = false)
     if inclusive
       region = :us ? (self..to_date).select(&:us_workday?) : (self..to_date).select(&:pe_workday?)
     else
