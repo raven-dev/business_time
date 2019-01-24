@@ -2,8 +2,12 @@ module BusinessTime
   module TimeExtensions
     # True if this time is on a workday (between 00:00:00 and 23:59:59), even if
     # this time falls outside of normal business hours.
-    def workday?
-      weekday? && !BusinessTime::Config.holidays.include?(to_date)
+    def us_workday?
+      weekday? && !BusinessTime::Config.holidays[:regions][:us].include?(to_date)
+    end
+
+    def pe_workday?
+      weekday? && !BusinessTime::Config.holidays[:regions][:pe].include?(to_date)
     end
 
     # True if this time falls on a weekday.
